@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
+import { CirclesWithBar } from "react-loader-spinner";
 
 import "./weather.css";
 
@@ -13,7 +15,7 @@ export default function Weather(props) {
       humidity: response.data.temperature.humidity,
       description: response.data.condition.description,
       pressure: response.data.temperature.pressure,
-      date: "Wednesday 07:00",
+      date: new Date(response.data.time * 1000),
       icon: response.data.condition.icon_url,
       wind: response.data.wind.speed,
       city: response.data.city,
@@ -43,7 +45,9 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li> {weatherData.date} </li>
+          <li>
+            <FormattedDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
@@ -77,6 +81,19 @@ export default function Weather(props) {
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
-    return "Loading...";
+    return (
+      <CirclesWithBar
+        height="100"
+        width="100"
+        color="#4fa94d"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        outerCircleColor="#198754"
+        innerCircleColor="#dd0c22"
+        barColor="#000"
+        ariaLabel="circles-with-bar-loading"
+      />
+    );
   }
 }
