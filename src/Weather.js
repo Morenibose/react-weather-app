@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import { CirclesWithBar } from "react-loader-spinner";
 
@@ -16,7 +17,7 @@ export default function Weather(props) {
       description: response.data.condition.description,
       pressure: response.data.temperature.pressure,
       date: new Date(response.data.time * 1000),
-      icon: response.data.condition.icon_url,
+      icon: response.data.condition.icon,
       wind: response.data.wind.speed,
       city: response.data.city,
     });
@@ -61,6 +62,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <WeatherForecast />
       </div>
     );
   } else {

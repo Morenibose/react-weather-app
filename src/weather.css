@@ -25,14 +25,13 @@
   line-height: 19px;
 }
 
-.weather img {
-  height: 100px;
-  width: 100px;
-  margin-right: 5px;
+.weather canvas {
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 .weather .temperature {
-  font-size: 64px;
+  font-size: 62px;
   font-weight: 400;
   color: rgb(33, 33, 33);
   line-height: 64px;
