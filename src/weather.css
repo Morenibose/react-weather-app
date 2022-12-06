@@ -1,7 +1,7 @@
 .weather {
-  border: 1px solid #0d6edf;
-  border-radius: 4px;
-  color: #878787;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
   font-family: sans-serif;
   padding: 16px;
 }

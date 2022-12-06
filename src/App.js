@@ -6,6 +6,7 @@ import "./App.css";
 export default function App() {
   return (
     <div className="App">
+      <h1 className="weatherAppName"> Weather App built with React</h1>
       <div className="container">
         <Weather defaultCity="Lagos" />
         <footer>
